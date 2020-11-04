@@ -10,6 +10,8 @@ import {EquipeService} from '../equipe.service';
 export class BonusComponent implements OnInit {
 
   @Input() bonus: Bonus;
+  array = Array;
+  img = '/assets/images/gp.png';
 
   constructor(private equipeService: EquipeService) {
   }

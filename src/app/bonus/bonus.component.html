@@ -1,23 +1,11 @@
-<!--<li class="list-group-item">-->
-<!--  <div class="row align-items-center">-->
-<!--    <div class="col-md-8">-->
-<!--      <h4>{{ bonus.type }}</h4>-->
-<!--      <div>{{bonus.description}}</div>-->
-<!--    </div>-->
-<!--    <div class="col-md-4 text-center">-->
-<!--      <button [disabled]="! isAchetable()" (click)="acheter()" class="btn btn-primary">Acheter ce bonus pour {{ bonus.cout}} GP</button>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</li>-->
-
-
 <div class="card mb-1 text-center">
   <div class="card-header text-white bg-dark">
+    <span *ngFor="let i of array(bonus.cout)" class="gp"><img [src]="img" class="img-fluid"></span>
     <h4>{{ bonus.type }}</h4>
   </div>
   <div class="margin">{{bonus.description}}</div>
   <div>
-    <button [disabled]="! isAchetable()" (click)="acheter()" class="btn btn-warning margin">{{ bonus.cout}} GP</button>
+    <button [disabled]="! isAchetable()" (click)="acheter()" class="btn btn-primary margin">Acheter</button>
   </div>
 </div>
 
