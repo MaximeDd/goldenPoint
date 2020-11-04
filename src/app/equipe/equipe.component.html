@@ -1,21 +1,9 @@
-<!--<li class="list-group-item">-->
-<!--  <h4>-->
-<!--    <span>{{ equipe.nom }}  :  {{ equipe.score}} points et {{ equipe.nbGoldenPointsRestants}} GP ({{ equipe.nbGoldenPointsGagnes }} gagnés)</span>-->
-<!--  </h4>-->
-<!--  <h5 *ngIf="equipe.bonusList">-->
-<!--    <span>Bonus achetés : </span>-->
-<!--  </h5>-->
-<!--  <ul>-->
-<!--    <div *ngFor="let bonus of equipe.bonusList">-->
-<!--      <p *ngIf="!bonus.utilise" class="alert alert-light">- {{bonus.type}} <span class="badge badge-pill badge-primary">acheté le {{bonus.dateAchat | date}}</span></p>-->
-<!--      <p *ngIf="bonus.utilise"class="alert alert-dark">- {{bonus.type}} <span class="badge badge-pill badge-danger">utilisé le {{bonus.dateUtilisation | date}}</span></p>-->
-<!--    </div>-->
-<!--  </ul>-->
-<!--</li>-->
-
-<li class="card-deck">
+<div class="card-deck">
   <div class="card mb-1">
-    <h4 class="card-header">
+    <h4 [ngClass]="{'card-header': true,
+    'bg-warning': equipe.classement === 1,
+    'bg-secondary': equipe.classement === 2,
+    'bg-info': equipe.classement === 3}">
       <div class="row">
         <span class="col-md-6">{{ equipe.nom }}</span>
         <span class="col-md-3">{{ equipe.score}} point<span *ngIf="equipe.score>1">s</span></span>
@@ -27,7 +15,7 @@
         <h5 *ngIf="equipe.bonusList">Bonus achetés :</h5>
         <ul>
           <div *ngFor="let bonus of equipe.bonusList">
-            <p *ngIf="!bonus.utilise" class="alert alert-light">- {{bonus.type}} <span
+            <p *ngIf="!bonus.utilise" class="alert alert-secondary">- {{bonus.type}} <span
               class="badge badge-pill badge-primary">acheté le {{bonus.dateAchat | date}}</span></p>
             <p *ngIf="bonus.utilise" class="alert alert-dark">- {{bonus.type}} <span
               class="badge badge-pill badge-danger">utilisé le {{bonus.dateUtilisation | date}}</span>
@@ -38,5 +26,5 @@
       <div class="col-md-1"></div>
     </div>
   </div>
-</li>
+</div>
 

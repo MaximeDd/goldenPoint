@@ -7,6 +7,7 @@ export class Equipe {
               public nbGoldenPointsGagnes: number,
               public nbGoldenPointsRestants: number,
               public score: number,
+              public classement: number,
               public password: string,
               public bonusList: Bonus[]) {
   }

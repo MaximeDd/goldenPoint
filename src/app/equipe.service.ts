@@ -9,20 +9,6 @@ import {Bonus} from './model/bonus';
 })
 export class EquipeService {
 
-
-  // equipes: { id: number, nom: string, nbGoldenPointsGagnes: number, nbGoldenPointsRestants: number, bonusList: { bonus: BonusComponent, quantite: number }[] }[] =
-  //   [{id: 1, nom: 'Alex et Max', nbGoldenPointsGagnes: 1, nbGoldenPointsRestants: 1, bonusList: []},
-  //     {id: 2, nom: 'Mathilde', nbGoldenPointsGagnes: 2, nbGoldenPointsRestants: 2, bonusList: []},
-  //     {id: 3, nom: 'Jeanne et Serge', nbGoldenPointsGagnes: 0, nbGoldenPointsRestants: 0, bonusList: []},
-  //     {id: 4, nom: 'Claire et Greg', nbGoldenPointsGagnes: 5, nbGoldenPointsRestants: 5, bonusList: []},
-  //     {id: 5, nom: 'Lucie et Correntin', nbGoldenPointsGagnes: 1, nbGoldenPointsRestants: 1, bonusList: []},
-  //     {id: 6, nom: 'Céline', nbGoldenPointsGagnes: 1, nbGoldenPointsRestants: 1, bonusList: []},
-  //     {id: 7, nom: 'Sophie', nbGoldenPointsGagnes: 0, nbGoldenPointsRestants: 0, bonusList: []},
-  //     {id: 8, nom: 'Marge et Pierre', nbGoldenPointsGagnes: 0, nbGoldenPointsRestants: 0, bonusList: []},
-  //     {id: 9, nom: 'Charlotte et Monk', nbGoldenPointsGagnes: 0, nbGoldenPointsRestants: 0, bonusList: []},
-  //     {id: 10, nom: 'Lise', nbGoldenPointsGagnes: 0, nbGoldenPointsRestants: 0, bonusList: []},
-  //     {id: 11, nom: 'Amy et Arnold', nbGoldenPointsGagnes: 0, nbGoldenPointsRestants: 0, bonusList: []}];
-
   private equipes: Equipe[];
 
   equipesSubject = new Subject<any[]>();
@@ -112,5 +98,17 @@ export class EquipeService {
 
   signIn(password: string): void {
     this.equipeConnectee = this.getEquipeByPassword(password);
+  }
+
+  sortAndGetClassement(equipes: Equipe[]): Equipe[] {
+    equipes.sort((a, b) => (a.nbGoldenPointsRestants > b.nbGoldenPointsRestants) ? 1 : -1)
+      .sort((a, b) => (a.nbGoldenPointsGagnes > b.nbGoldenPointsGagnes) ? 1 : -1)
+      .sort((a, b) => (a.score > b.score) ? -1 : 1);
+    let i = 1;
+    equipes.forEach(equipe => {
+      equipe.classement = i;
+      i++;
+    });
+    return equipes;
   }
 }

@@ -14,13 +14,14 @@ import {RouterModule, Routes} from '@angular/router';
 import {BonusService} from './bonus.service';
 import {AuthGuardService} from './auth-guard.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FourOfourComponent } from './four-ofour/four-ofour.component';
 
 const appRoutes: Routes = [
   {path: 'equipes', canActivate: [AuthGuardService], component: EquipesComponent},
   {path: 'bonus', canActivate: [AuthGuardService], component: BonusviewComponent},
   { path: 'auth', component: AuthComponent },
   {path: '', canActivate: [AuthGuardService], component: EquipesComponent},
-  { path: '**', redirectTo: '' }
+  { path: '**', component: FourOfourComponent }
 ];
 
 @NgModule({
@@ -30,7 +31,8 @@ const appRoutes: Routes = [
     BonusComponent,
     EquipesComponent,
     AuthComponent,
-    BonusviewComponent
+    BonusviewComponent,
+    FourOfourComponent
   ],
   imports: [
     BrowserModule,

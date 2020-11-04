@@ -22,9 +22,7 @@ export class EquipesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.equipesSub = this.equipeservice.equipesSubject.subscribe(
       (equipes: Equipe[]) => {
-        equipes.sort((a, b) => (a.nbGoldenPointsRestants > b.nbGoldenPointsRestants) ? 1 : -1)
-          .sort((a, b) => (a.nbGoldenPointsGagnes > b.nbGoldenPointsGagnes) ? 1 : -1)
-          .sort((a, b) => (a.score > b.score) ? -1 : 1);
+        equipes = this.equipeservice.sortAndGetClassement(equipes);
         equipes.forEach(equipe => {
           if (equipe.bonusList !== null && equipe.bonusList !== undefined) {
             equipe.bonusList.sort((a, b) => (a.utilise > b.utilise) ? 1 : -1);
