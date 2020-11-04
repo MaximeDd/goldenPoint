@@ -1,0 +1,10 @@
+<h2>Entres ton code</h2>
+<div class="col-sm-8 col-sm-offset-2">
+  <form [formGroup]="passwordForm" (ngSubmit)="onSubmitForm()">
+    <div class="form-group">
+<!--      <label for="password">Code</label>-->
+      <input type="password" id="password" class="form-control" formControlName="password" placeholder="GDTEJ">
+    </div>
+    <button type="submit" class="btn btn-primary">Se connecter</button>
+  </form>
+</div>

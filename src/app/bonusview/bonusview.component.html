@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-12">
+      <h2>Les bonus</h2>
+      <ul class="list-group">
+        <app-bonus *ngFor="let bonus of bonusList"
+                    [bonus]="bonus"></app-bonus>
+      </ul>
+    </div>
+  </div>
+</div>

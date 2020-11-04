@@ -1,0 +1,13 @@
+<li class="list-group-item">
+  <div class="row align-items-center">
+    <div class="col-md-8">
+      <h4>{{ bonus.type }}</h4>
+      <div>{{bonus.description}}</div>
+    </div>
+    <div class="col-md-4 text-center">
+      <button [disabled]="! isAchetable()" (click)="acheter()" class="btn btn-primary">Acheter ce bonus pour {{ bonus.cout}} GP</button>
+    </div>
+  </div>
+</li>
+
+
