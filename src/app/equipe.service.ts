@@ -56,7 +56,6 @@ export class EquipeService {
       .put('https://goldenpoint-quiz.firebaseio.com/equipes.json', this.equipes)
       .subscribe(
         () => {
-          console.log('Enregistrement terminé !');
         },
         (error) => {
           console.log('Erreur ! : ' + error);
@@ -66,12 +65,10 @@ export class EquipeService {
 
   saveEquipe(equipe: Equipe): void {
     const url = 'https://goldenpoint-quiz.firebaseio.com/equipes/' + equipe.id + '.json';
-    console.log(url);
     this.httpClient
       .put(url, equipe)
       .subscribe(
         () => {
-          console.log('Màj equipe OK !' + equipe);
           this.equipeConnectee = equipe;
         },
         (error) => {

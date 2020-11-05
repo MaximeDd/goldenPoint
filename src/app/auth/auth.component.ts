@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Equipe} from '../model/equipe';
 import {EquipeService} from '../equipe.service';
+import {BonusService} from '../bonus.service';
 
 @Component({
   selector: 'app-auth',
@@ -18,7 +19,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   passwordForm: FormGroup;
 
 
-  constructor(private equipeService: EquipeService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private equipeService: EquipeService, private formBuilder: FormBuilder, private router: Router, private bonusService: BonusService) {
   }
 
   initForm() {

@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BonusComponent} from '../bonus/bonus.component';
 import {Equipe} from '../model/equipe';
 
 @Component({
