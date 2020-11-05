@@ -1,3 +1,16 @@
 .alert-dark {
   background-color: dimgray !important;
 }
+
+.bg-warning {
+  background-color: #d0d0d0 !important;
+}
+
+.bg-secondary {
+  background-color: #e0e0e0 !important;
+}
+
+.bg-info {
+  background-color: #f0f0f0 !important;
+}
+

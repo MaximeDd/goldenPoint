@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Equipe} from '../model/equipe';
+import {EquipeService} from '../equipe.service';
 
 @Component({
   selector: 'app-equipe',
@@ -9,9 +10,11 @@ import {Equipe} from '../model/equipe';
 export class EquipeComponent implements OnInit {
 
   @Input() equipe: Equipe;
+  @Input() ouvert = false;
+
   goldMedal = '/assets/images/goldMedal.png';
-  silverMedal = '/assets/images/silverMedal.png';;
-  bronzeMedal = '/assets/images/bronzeMedal.png';;
+  silverMedal = '/assets/images/silverMedal.png';
+  bronzeMedal = '/assets/images/bronzeMedal.png';
 
   constructor() {
   }
