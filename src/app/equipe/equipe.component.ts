@@ -10,6 +10,9 @@ import {Equipe} from '../model/equipe';
 export class EquipeComponent implements OnInit {
 
   @Input() equipe: Equipe;
+  goldMedal = '/assets/images/goldMedal.png';
+  silverMedal = '/assets/images/silverMedal.png';;
+  bronzeMedal = '/assets/images/bronzeMedal.png';;
 
   constructor() {
   }

@@ -1,13 +1,16 @@
 <div class="card-deck">
   <div class="card mb-1">
-    <h4 [ngClass]="{'card-header': true,
-    'bg-warning': equipe.classement === 1,
-    'bg-secondary': equipe.classement === 2,
-    'bg-info': equipe.classement === 3}">
+    <h4 class="card-header">
       <div class="row">
-        <span class="col-md-6">{{ equipe.nom }}</span>
+        <span class="col-md-1">
+          <img class="img-fluid" [src]="goldMedal" *ngIf="equipe.classement === 1">
+          <img class="img-fluid" [src]="silverMedal" *ngIf="equipe.classement === 2">
+          <img class="img-fluid" [src]="bronzeMedal" *ngIf="equipe.classement === 3">
+        </span>
+        <span class="col-md-5">{{ equipe.nom }}</span>
         <span class="col-md-3">{{ equipe.score}} point<span *ngIf="equipe.score>1">s</span></span>
-        <span class="col-md-3">{{ equipe.nbGoldenPointsRestants}} GP ({{ equipe.nbGoldenPointsGagnes }} gagné<span *ngIf="equipe.nbGoldenPointsGagnes>1">s</span>)</span>
+        <span class="col-md-3">{{ equipe.nbGoldenPointsRestants}} GP ({{ equipe.nbGoldenPointsGagnes }} gagné<span
+          *ngIf="equipe.nbGoldenPointsGagnes>1">s</span>)</span>
       </div>
     </h4>
     <div class="row">
