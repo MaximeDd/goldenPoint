@@ -6,6 +6,9 @@ export class Bonus {
               public utilise: boolean,
               public dateUtilisation: Date,
               public dateAchat: Date,
-              public achetable: boolean) {
+              public achetable: boolean,
+              public promo: boolean,
+              public nouveau: boolean,
+              public quantite: number) {
   }
 }

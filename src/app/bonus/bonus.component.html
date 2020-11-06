@@ -2,6 +2,9 @@
   <div class="card-header text-white bg-dark">
     <span *ngFor="let i of array(bonus.cout)" class="gp"><img [src]="img" class="img-fluid"></span>
     <h4>{{ bonus.type }}</h4>
+    <span class="marge badge badge-pill badge-warning" *ngIf="bonus.promo">&#37; PROMO</span>
+    <span class="marge badge badge-pill badge-success" *ngIf="bonus.nouveau">&#9733; NEW</span>
+<!--    <span class="marge badge badge-pill badge-danger" *ngIf="bonus.quantite === 0">&#9733; SOLD OUT</span>-->
   </div>
   <div class="margin">{{bonus.description}}</div>
   <div>
