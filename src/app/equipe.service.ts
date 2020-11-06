@@ -66,12 +66,14 @@ export class EquipeService {
   }
 
   saveEquipe(equipe: Equipe): void {
+    sessionStorage.setItem('equipe',  JSON.stringify(equipe));
     const url = 'https://goldenpoint-quiz.firebaseio.com/equipes/' + equipe.id + '.json';
     this.httpClient
       .put(url, equipe)
       .subscribe(
         () => {
           this.equipeConnectee = equipe;
+          this.getAllEquipes();
         },
         (error) => {
           console.log('Erreur ! : ' + error);
