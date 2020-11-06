@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Equipe} from '../model/equipe';
-import {EquipeService} from '../equipe.service';
 
 @Component({
   selector: 'app-equipe',
@@ -15,6 +14,7 @@ export class EquipeComponent implements OnInit {
   goldMedal = '/assets/images/goldMedal.png';
   silverMedal = '/assets/images/silverMedal.png';
   bronzeMedal = '/assets/images/bronzeMedal.png';
+  loozerMedal = '/assets/images/caca.png';
 
   constructor() {
   }

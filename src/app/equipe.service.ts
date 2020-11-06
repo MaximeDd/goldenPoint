@@ -9,7 +9,7 @@ import {Bonus} from './model/bonus';
 })
 export class EquipeService {
 
-  private equipes: Equipe[];
+  equipes = [];
 
   equipesSubject = new Subject<any[]>();
 
@@ -34,6 +34,8 @@ export class EquipeService {
       .subscribe(
         (response) => {
           this.equipes = response;
+          this.emitEquipesSubject();
+          this.emitequipeConnecteeSubject();
         },
         (error) => {
           console.log('Erreur ! : ' + error);
@@ -90,11 +92,24 @@ export class EquipeService {
   }
 
   isAuth(): boolean {
-    return this.equipeConnectee !== undefined && this.equipeConnectee !== null;
+    if (this.equipeConnectee === undefined || this.equipeConnectee === null) {
+      const equipeSession = sessionStorage.getItem('equipe');
+      // if (password !== undefined && password !== null && password !== '') {
+      if (equipeSession !== undefined && equipeSession !== null && equipeSession !== '') {
+        this.equipeConnectee = JSON.parse(equipeSession);
+        return true;
+      } else {
+        return false;
+      }
+    }
+    return true;
   }
 
   signIn(password: string): void {
     this.equipeConnectee = this.getEquipeByPassword(password);
+    if (this.equipeConnectee !== undefined && this.equipeConnectee !== null) {
+      sessionStorage.setItem('equipe',  JSON.stringify(this.equipeConnectee));
+    }
   }
 
   sortAndGetClassement(equipes: Equipe[]): Equipe[] {

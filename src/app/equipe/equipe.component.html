@@ -9,6 +9,7 @@
           <img class="img-fluid" [src]="goldMedal" *ngIf="equipe.classement === 1">
           <img class="img-fluid" [src]="silverMedal" *ngIf="equipe.classement === 2">
           <img class="img-fluid" [src]="bronzeMedal" *ngIf="equipe.classement === 3">
+          <img class="img-fluid" [src]="loozerMedal" *ngIf="equipe.looser">
         </span>
         <span class="col-md-5">{{ equipe.nom }}</span>
         <span class="col-md-3">{{ equipe.score}} point<span *ngIf="equipe.score>1">s</span></span>

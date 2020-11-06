@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {Bonus} from './model/bonus';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +8,7 @@ import {Bonus} from './model/bonus';
 export class BonusService {
 
 
-  bonusList: Bonus[];
+  bonusList = [];
 
   bonusSubject = new Subject<any[]>();
 
@@ -27,18 +26,7 @@ export class BonusService {
       .subscribe(
         (response) => {
           this.bonusList = response;
-        },
-        (error) => {
-          console.log('Erreur ! : ' + error);
-        }
-      );
-  }
-
-  saveAllBonus(): void {
-    this.httpClient
-      .put('https://goldenpoint-quiz.firebaseio.com/bonus.json', this.bonusList)
-      .subscribe(
-        () => {
+          this.emitBonusListSubject();
         },
         (error) => {
           console.log('Erreur ! : ' + error);
