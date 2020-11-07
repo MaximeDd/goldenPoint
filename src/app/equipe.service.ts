@@ -90,7 +90,6 @@ export class EquipeService {
   }
 
   acheterBonus(bonus: Bonus): void {
-    bonus.utilise = false;
     bonus.dateAchat = new Date();
     const equipeConnectee = this.equipeConnectee;
     if (!equipeConnectee.bonusList) {
