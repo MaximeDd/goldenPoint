@@ -25,7 +25,7 @@ export class EquipesComponent implements OnInit, OnDestroy {
         equipes = this.equipeservice.sortAndGetClassement(equipes);
         equipes.forEach(equipe => {
           if (equipe.bonusList !== null && equipe.bonusList !== undefined) {
-            equipe.bonusList.sort((a, b) => (a.utilise > b.utilise) ? 1 : -1);
+            equipe.bonusList.sort((a, b) => (a.dateAchat > b.dateAchat) ? -1 : 1);
           }
         });
         this.equipes = equipes;

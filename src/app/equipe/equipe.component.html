@@ -23,9 +23,9 @@
         <h5 *ngIf="!equipe.bonusList">Aucun bonus</h5>
         <ul>
           <div *ngFor="let bonus of equipe.bonusList">
-            <p *ngIf="!bonus.utilise" class="alert alert-secondary">- {{bonus.type}} <span
+            <p *ngIf="!bonus.dateUtilisation" class="alert alert-secondary">- {{bonus.type}} <span
               class="badge badge-pill badge-primary">acheté le {{bonus.dateAchat | date}}</span></p>
-            <p *ngIf="bonus.utilise" class="alert alert-dark">- {{bonus.type}} <span
+            <p *ngIf="bonus.dateUtilisation" class="alert alert-dark">- {{bonus.type}} <span
               class="badge badge-pill badge-danger">utilisé le {{bonus.dateUtilisation | date}}</span>
             </p>
           </div>
