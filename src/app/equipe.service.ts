@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Subject} from 'rxjs';
 import {Equipe} from './model/equipe';
 import {Bonus} from './model/bonus';
+import {environment} from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -29,12 +30,18 @@ export class EquipeService {
   }
 
   getAllEquipes(): void {
+    const url = 'https://goldenpoint-quiz.firebaseio.com/' + environment.equipesDB + '.json';
     this.httpClient
-      .get<any[]>('https://goldenpoint-quiz.firebaseio.com/equipes.json')
+      .get<any[]>(url)
       .subscribe(
         (response) => {
           this.equipes = response;
           this.emitEquipesSubject();
+
+          if (this.equipeConnectee !== undefined && this.equipeConnectee !== null) {
+            this.equipeConnectee = this.getEquipeByPassword(this.equipeConnectee.password);
+            sessionStorage.setItem('equipe', JSON.stringify(this.equipeConnectee));
+          }
           this.emitequipeConnecteeSubject();
         },
         (error) => {
@@ -54,8 +61,9 @@ export class EquipeService {
   }
 
   saveAllEquipes(): void {
+    const url = 'https://goldenpoint-quiz.firebaseio.com/' + environment.equipesDB + '.json';
     this.httpClient
-      .put('https://goldenpoint-quiz.firebaseio.com/equipes.json', this.equipes)
+      .put(url, this.equipes)
       .subscribe(
         () => {
         },
@@ -66,8 +74,8 @@ export class EquipeService {
   }
 
   saveEquipe(equipe: Equipe): void {
-    sessionStorage.setItem('equipe',  JSON.stringify(equipe));
-    const url = 'https://goldenpoint-quiz.firebaseio.com/equipes/' + equipe.id + '.json';
+    sessionStorage.setItem('equipe', JSON.stringify(equipe));
+    const url = 'https://goldenpoint-quiz.firebaseio.com/' + environment.equipesDB + '/' + equipe.id + '.json';
     this.httpClient
       .put(url, equipe)
       .subscribe(
@@ -96,7 +104,6 @@ export class EquipeService {
   isAuth(): boolean {
     if (this.equipeConnectee === undefined || this.equipeConnectee === null) {
       const equipeSession = sessionStorage.getItem('equipe');
-      // if (password !== undefined && password !== null && password !== '') {
       if (equipeSession !== undefined && equipeSession !== null && equipeSession !== '') {
         this.equipeConnectee = JSON.parse(equipeSession);
         return true;
@@ -110,7 +117,7 @@ export class EquipeService {
   signIn(password: string): void {
     this.equipeConnectee = this.getEquipeByPassword(password);
     if (this.equipeConnectee !== undefined && this.equipeConnectee !== null) {
-      sessionStorage.setItem('equipe',  JSON.stringify(this.equipeConnectee));
+      sessionStorage.setItem('equipe', JSON.stringify(this.equipeConnectee));
     }
   }
 
